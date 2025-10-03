@@ -1,80 +1,69 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Create the main hero container (single hero design)
-  const heroContainer = document.createElement('div');
-  heroContainer.classList.add('promotional-hero-container');
+  rows.forEach((row) => {
+    const [image, description, buttonText] = row.children;
 
-  // Process the first row only (single hero design)
-  if (rows.length > 0) {
-    const firstRow = rows[0];
-    const cols = [...firstRow.children];
+    // Create the promotional card structure
+    const card = document.createElement('div');
+    card.className = 'promotional-hero-card';
 
-    let backgroundImage = null;
-    const contentElements = [];
-    let ctaElement = null;
-
-    // Separate content types
-    cols.forEach((col) => {
-      const content = col.cloneNode(true);
-
-      if (content.querySelector('picture')) {
-        // This is the background image
-        const picture = content.querySelector('picture');
-        const img = picture.querySelector('img');
-        if (img) {
-          backgroundImage = createOptimizedPicture(
-            img.src,
-            img.alt,
-            false,
-            [{ width: '1200' }],
-          );
-        }
-      } else if (content.querySelector('a')) {
-        // This is the CTA
-        ctaElement = content;
-      } else {
-        // This is text content
-        contentElements.push(content);
-      }
-    });
-
-    // Create background image container
-    if (backgroundImage) {
+    // Handle image
+    if (image && image.querySelector('picture, img')) {
       const imageContainer = document.createElement('div');
-      imageContainer.classList.add('promotional-hero-background');
-      imageContainer.appendChild(backgroundImage);
-      heroContainer.appendChild(imageContainer);
+      imageContainer.className = 'promotional-hero-image';
+      imageContainer.innerHTML = image.innerHTML;
+      card.appendChild(imageContainer);
     }
 
-    // Create intersecting overlay box
-    const overlayBox = document.createElement('div');
-    overlayBox.classList.add('promotional-hero-overlay-box');
+    // Create white box for content
+    const whiteBox = document.createElement('div');
+    whiteBox.className = 'promotional-hero-whitebox';
 
-    // Add content to overlay box
-    contentElements.forEach((content) => {
-      const contentDiv = document.createElement('div');
-      contentDiv.classList.add('promotional-hero-content');
-      while (content.firstChild) {
-        contentDiv.appendChild(content.firstChild);
-      }
-      overlayBox.appendChild(contentDiv);
-    });
-
-    // Add CTA to overlay box
-    if (ctaElement) {
-      const ctaDiv = document.createElement('div');
-      ctaDiv.classList.add('promotional-hero-cta');
-      while (ctaElement.firstChild) {
-        ctaDiv.appendChild(ctaElement.firstChild);
-      }
-      overlayBox.appendChild(ctaDiv);
+    // Handle description
+    if (description) {
+      const descriptionElement = document.createElement('p');
+      descriptionElement.className = 'promotional-hero-description';
+      descriptionElement.textContent = description.textContent;
+      whiteBox.appendChild(descriptionElement);
     }
 
-    heroContainer.appendChild(overlayBox);
-  }
+    // Handle button - always create one
+    const buttonElement = document.createElement('a');
+    buttonElement.className = 'promotional-hero-button';
 
-  block.replaceChildren(heroContainer);
+    if (buttonText) {
+      const link = buttonText.querySelector('a');
+      if (link) {
+        buttonElement.href = link.href;
+        buttonElement.textContent = link.textContent;
+        buttonElement.target = link.target || '_self';
+      } else {
+        buttonElement.href = '#';
+        buttonElement.textContent = buttonText.textContent;
+      }
+    } else {
+      buttonElement.href = '#';
+      buttonElement.textContent = '';
+    }
+
+    whiteBox.appendChild(buttonElement);
+
+    card.appendChild(whiteBox);
+
+    // Replace the row with the card
+    row.replaceWith(card);
+  });
+
+  // Wrap all cards in a container
+  const container = document.createElement('div');
+  container.className = 'promotional-hero-container';
+  container.append(...block.children);
+
+  // Create outer wrapper for centering
+  const wrapper = document.createElement('div');
+  wrapper.className = 'promotional-hero';
+  wrapper.appendChild(container);
+
+  block.replaceChildren(wrapper);
 }

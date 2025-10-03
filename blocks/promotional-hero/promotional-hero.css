@@ -1,179 +1,185 @@
-.promotional-hero-container {
-  position: relative;
+.promotional-hero {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 300px;
-  overflow: hidden;
 }
 
-.promotional-hero-background {
+.promotional-hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-large);
+  margin: var(--spacing-xbig) 0;
+  padding: 0;
+  width: auto;
+}
+
+.promotional-hero-card {
+  position: relative;
+  min-height: 500px;
+  width: 500px;
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  will-change: transform;
+  transform-origin: center;
+}
+
+.promotional-hero-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+  transition: box-shadow 0.3s ease;
 }
 
-.promotional-hero-background img {
+.promotional-hero-card:hover .promotional-hero-image {
+  box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+}
+
+.promotional-hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.3s ease;
 }
 
-.promotional-hero-overlay-box {
+.promotional-hero-card:hover .promotional-hero-image img {
+  transform: scale(1.05);
+}
+
+/* White intersection box */
+.promotional-hero-whitebox {
   position: absolute;
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
   background: white;
-  padding: calc(var(--spacing-large) / 2) calc(var(--spacing-xlarge) / 2);
-  border-radius: calc(var(--border-radius-medium) / 2);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
-  z-index: 2;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
   text-align: center;
-  max-width: 300px;
-  width: 85%;
+  max-width: 80%;
+  width: auto;
+  min-width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.promotional-hero-content {
-  margin-bottom: calc(var(--spacing-medium) / 2);
+.promotional-hero-card:hover .promotional-hero-whitebox {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
 }
 
-.promotional-hero-content h1,
-.promotional-hero-content h2,
-.promotional-hero-content h3 {
-  font-family: var(--heading-font-family);
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 calc(var(--spacing-small) / 2);
+/* Description - dark text in white box */
+.promotional-hero-description {
   color: var(--text-color);
-  line-height: 1.2;
+  margin: 0 0 var(--spacing-small);
+  text-align: center;
 }
 
-.promotional-hero-content h1 {
-  font-size: calc(var(--heading-font-size-xxl) / 2);
-}
-
-.promotional-hero-content h2 {
-  font-size: calc(var(--heading-font-size-xl) / 2);
-}
-
-.promotional-hero-content h3 {
-  font-size: calc(var(--heading-font-size-l) / 2);
-}
-
-.promotional-hero-content p {
-  font-size: calc(var(--body-font-size-l) / 2);
-  line-height: 1.6;
-  margin: 0;
-  color: var(--text-color);
-}
-
-.promotional-hero-cta {
-  margin-top: calc(var(--spacing-medium) / 2);
-}
-
-.promotional-hero-cta a {
+.promotional-hero-button {
   display: inline-block;
-  padding: calc(var(--spacing-medium) / 2) calc(var(--spacing-xlarge) / 2);
-  background: #6dc4bd;
+  background-color: #7CB5A6;
   color: white;
   text-decoration: none;
-  border-radius: calc(var(--border-radius-large) / 2);
-  font-weight: var(--font-weight-medium);
-  font-size: calc(var(--body-font-size-l) / 2);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgb(109 196 189 / 30%);
+  padding: 11px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
   text-transform: capitalize;
+  letter-spacing: 0.3px;
+  border: none;
 }
 
-.promotional-hero-cta a:hover {
-  background: #5ab3ac;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 12px rgb(109 196 189 / 40%);
+.promotional-hero-button:hover {
+  background-color: #6BA393;
+  color: white;
+  text-decoration: none;
+  transform: scale(1.03);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Desktop centering */
+@media (min-width: 769px) {
   .promotional-hero-container {
-    height: 550px;
+    justify-content: center;
   }
-  
-  .promotional-hero-overlay-box {
-    max-width: 500px;
-    padding: var(--spacing-large);
-    bottom: -30px;
-  }
-  
-  .promotional-hero-content h1 {
-    font-size: var(--heading-font-size-xl);
-  }
-  
-  .promotional-hero-content h2 {
-    font-size: var(--heading-font-size-l);
+
+  .promotional-hero-card {
+    flex: 0 0 auto;
   }
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .promotional-hero-container {
-    height: 250px;
+    gap: var(--spacing-xlarge);
+    padding: 0 var(--spacing-small);
+    margin: var(--spacing-large) 0;
   }
-  
-  .promotional-hero-overlay-box {
-    max-width: 225px;
-    padding: calc(var(--spacing-medium) / 2) calc(var(--spacing-large) / 2);
-    width: 90%;
-    bottom: -12px;
+
+  .promotional-hero-card {
+    min-height: 450px;
+    width: 400px;
+    max-width: 100%;
   }
-  
-  .promotional-hero-content h1 {
-    font-size: calc(var(--heading-font-size-l) / 2);
+
+  .promotional-hero-whitebox {
+    bottom: -18px;
+    padding: var(--spacing-small) var(--spacing-small);
+    max-width: 90%;
+    min-width: 250px;
   }
-  
-  .promotional-hero-content h2 {
-    font-size: calc(var(--heading-font-size-m) / 2);
+
+  .promotional-hero-description {
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-xsmall);
   }
-  
-  .promotional-hero-content p {
-    font-size: calc(var(--body-font-size-m) / 2);
-  }
-  
-  .promotional-hero-cta a {
-    padding: calc(var(--spacing-small) / 2) calc(var(--spacing-large) / 2);
-    font-size: calc(var(--body-font-size-m) / 2);
+
+  .promotional-hero-button {
+    padding: 10px 24px;
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .promotional-hero-container {
-    height: 225px;
+    padding: 0 var(--spacing-xsmall);
+    gap: var(--spacing-large);
   }
-  
-  .promotional-hero-overlay-box {
-    max-width: 175px;
-    padding: calc(var(--spacing-medium) / 2);
-    width: 90%;
-    bottom: -10px;
+
+  .promotional-hero-card {
+    min-height: 400px;
+    width: 350px;
+    max-width: 100%;
   }
-  
-  .promotional-hero-content h1 {
-    font-size: calc(var(--heading-font-size-m) / 2);
+
+  .promotional-hero-whitebox {
+    bottom: -16px;
+    padding: var(--spacing-xsmall) var(--spacing-small);
+    max-width: 90%;
+    min-width: 220px;
   }
-  
-  .promotional-hero-content h2 {
-    font-size: calc(var(--heading-font-size-s) / 2);
+
+  .promotional-hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
   }
-  
-  .promotional-hero-content {
-    margin-bottom: calc(var(--spacing-small) / 2);
-  }
-  
-  .promotional-hero-cta {
-    margin-top: calc(var(--spacing-small) / 2);
-  }
-  
-  .promotional-hero-cta a {
-    padding: calc(var(--spacing-small) / 2) calc(var(--spacing-medium) / 2);
-    font-size: calc(var(--body-font-size-s) / 2);
+
+  .promotional-hero-button {
+    padding: 9px 20px;
+    font-size: 0.75rem;
   }
 }

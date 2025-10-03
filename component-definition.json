@@ -180,25 +180,41 @@
           }
         },
         {
+          "title": "Newsletter",
+          "id": "newsletter",
+          "plugins": {
+            "da": {
+              "name": "newsletter",
+              "rows": 1,
+              "columns": 3
+            }
+          },
+          "model": "newsletter"
+        },
+        {
           "title": "Promotional Hero",
           "id": "promotional-hero",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"promotional-hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Christmas products\"></picture></div><div><h2>Our Christmas Shop</h2><p>Is Open!</p></div><div><a href=\"#\">Shop Christmas</a></div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Halloween treats\"></picture></div><div><h2>Frightfully Delicious</h2><p>Treats</p></div><div><a href=\"#\">Shop Halloween</a></div></div></div>"
+              "name": "promotional-hero",
+              "rows": 2,
+              "columns": 3
             }
           },
           "model": "promotional-hero",
           "filter": "promotional-hero"
         },
         {
-          "title": "Promotional Section",
-          "id": "promotional-section",
+          "title": "Promotional Card",
+          "id": "promotional-card",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Promotional image\"></picture></div><div><h2>Promotional Title</h2><p>Promotional text</p></div><div><a href=\"#\">Call to Action</a></div></div>"
+              "name": "promotional-card",
+              "rows": 1,
+              "columns": 3
             }
           },
-          "model": "promotional-section"
+          "model": "promotional-card"
         },
         {
           "title": "Quote",

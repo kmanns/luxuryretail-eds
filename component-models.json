@@ -219,13 +219,39 @@
     ]
   },
   {
-    "id": "promotional-section",
+    "id": "newsletter",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)",
+        "label": "Title",
+        "value": "Sign up to our newsletter"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)",
+        "label": "Description",
+        "value": "Exciting news, exclusive events, & delicious products: subscribe to our emails to hear the latest from Fortnum's"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(3)",
+        "label": "Privacy Text",
+        "value": "For more details about how we use your information please see our Privacy Policy"
+      }
+    ]
+  },
+  {
+    "id": "promotional-card",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
         "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
-        "label": "Background Image",
+        "label": "Card Image",
         "multi": false
       },
       {
@@ -239,21 +265,21 @@
         "component": "richtext",
         "name": "div:nth-child(2)",
         "value": "",
-        "label": "Content",
+        "label": "Description",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(3)>a:nth-child(1)[href]",
-        "label": "CTA Link",
+        "label": "Button Link",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(3)>a:nth-child(1)",
-        "label": "CTA Text",
+        "label": "Button Text",
         "multi": false
       }
     ]

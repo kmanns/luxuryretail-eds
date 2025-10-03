@@ -149,10 +149,7 @@
 .cards-circular .cards-circular-item-body h5,
 .cards-circular .cards-circular-item-body h6 {
   margin: 0;
-  font-size: var(--body-font-size-m);
-  font-weight: var(--font-weight-medium);
   color: var(--text-color);
-  line-height: 1.2;
 }
 
 .cards-circular .cards-circular-item-link a {

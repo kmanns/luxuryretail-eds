@@ -1,0 +1,153 @@
+.newsletter {
+  background-color: #1d6b6b;
+  color: white;
+  padding: var(--spacing-xxbig) var(--spacing-medium);
+  text-align: center;
+}
+
+.newsletter-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.newsletter-title {
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-small);
+}
+
+.newsletter-description {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-medium);
+  opacity: 0.95;
+}
+
+.newsletter-form {
+  margin: 0 0 var(--spacing-small);
+}
+
+.newsletter-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  transition: max-width 0.3s ease;
+}
+
+.newsletter-input-wrapper.expanded {
+  max-width: 600px;
+}
+
+.newsletter-input {
+  flex: 1;
+  border: none;
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  background: transparent;
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: #666;
+}
+
+.newsletter-button {
+  display: none;
+  background-color: #7CB5A6;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+  text-transform: capitalize;
+}
+
+.newsletter-button:hover {
+  background-color: #6BA393;
+}
+
+.newsletter-input-wrapper.expanded .newsletter-button {
+  display: block;
+}
+
+.newsletter-privacy {
+  color: white;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.newsletter-privacy a {
+  color: white;
+  text-decoration: underline;
+}
+
+.newsletter-privacy a:hover {
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .newsletter {
+    padding: var(--spacing-xlarge) var(--spacing-small);
+  }
+
+  .newsletter-title {
+    font-size: 1.75rem;
+  }
+
+  .newsletter-description {
+    font-size: 0.95rem;
+  }
+
+  .newsletter-input-wrapper {
+    max-width: 100%;
+  }
+
+  .newsletter-input-wrapper.expanded {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  .newsletter-input-wrapper.expanded .newsletter-button {
+    width: 100%;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter {
+    padding: var(--spacing-large) var(--spacing-small);
+  }
+
+  .newsletter-title {
+    font-size: 1.5rem;
+  }
+
+  .newsletter-description {
+    font-size: 0.9rem;
+  }
+
+  .newsletter-input {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}
+
