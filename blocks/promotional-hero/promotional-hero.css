@@ -1,12 +1,6 @@
-.promotional-hero-main-container {
-  display: flex;
-  gap: var(--spacing-medium);
-  width: 100%;
-}
-
 .promotional-hero-container {
   position: relative;
-  flex: 1;
+  width: 100%;
   height: 600px;
   overflow: hidden;
 }
@@ -29,18 +23,17 @@
 
 .promotional-hero-overlay-box {
   position: absolute;
-  bottom: 0;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  padding: var(--spacing-large);
-  border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
-  box-shadow: 0 -4px 20px rgb(0 0 0 / 10%);
+  padding: var(--spacing-large) var(--spacing-xlarge);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 15%);
   z-index: 2;
   text-align: center;
-  max-width: 500px;
-  width: 90%;
-  margin-bottom: 0;
+  max-width: 600px;
+  width: 85%;
 }
 
 .promotional-hero-content {
@@ -58,15 +51,15 @@
 }
 
 .promotional-hero-content h1 {
-  font-size: var(--heading-font-size-xl);
+  font-size: var(--heading-font-size-xxl);
 }
 
 .promotional-hero-content h2 {
-  font-size: var(--heading-font-size-l);
+  font-size: var(--heading-font-size-xl);
 }
 
 .promotional-hero-content h3 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-l);
 }
 
 .promotional-hero-content p {
@@ -82,32 +75,55 @@
 
 .promotional-hero-cta a {
   display: inline-block;
-  padding: var(--spacing-medium) var(--spacing-large);
-  background: var(--link-color);
+  padding: var(--spacing-medium) var(--spacing-xlarge);
+  background: #6dc4bd;
   color: white;
   text-decoration: none;
   border-radius: var(--border-radius-large);
   font-weight: var(--font-weight-medium);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-l);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgb(0 0 0 / 20%);
+  box-shadow: 0 4px 16px rgb(109 196 189 / 30%);
+  text-transform: capitalize;
 }
 
 .promotional-hero-cta a:hover {
-  background: var(--link-hover-color);
+  background: #5ab3ac;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
+  box-shadow: 0 6px 24px rgb(109 196 189 / 40%);
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .promotional-hero-container {
+    height: 550px;
+  }
+  
+  .promotional-hero-overlay-box {
+    max-width: 500px;
+    padding: var(--spacing-large);
+    bottom: 40px;
+  }
+  
+  .promotional-hero-content h1 {
+    font-size: var(--heading-font-size-xl);
+  }
+  
+  .promotional-hero-content h2 {
+    font-size: var(--heading-font-size-l);
+  }
+}
+
+@media (max-width: 768px) {
+  .promotional-hero-container {
     height: 500px;
   }
   
   .promotional-hero-overlay-box {
-    max-width: 350px;
-    padding: var(--spacing-medium);
+    max-width: 450px;
+    padding: var(--spacing-medium) var(--spacing-large);
+    width: 90%;
+    bottom: 30px;
   }
   
   .promotional-hero-content h1 {
@@ -117,22 +133,27 @@
   .promotional-hero-content h2 {
     font-size: var(--heading-font-size-m);
   }
-}
-
-@media (max-width: 768px) {
-  .promotional-hero-main-container {
-    flex-direction: column;
-    gap: var(--spacing-small);
+  
+  .promotional-hero-content p {
+    font-size: var(--body-font-size-m);
   }
   
+  .promotional-hero-cta a {
+    padding: var(--spacing-small) var(--spacing-large);
+    font-size: var(--body-font-size-m);
+  }
+}
+
+@media (max-width: 480px) {
   .promotional-hero-container {
-    height: 400px;
+    height: 450px;
   }
   
   .promotional-hero-overlay-box {
-    max-width: 300px;
+    max-width: 350px;
     padding: var(--spacing-medium);
-    width: 95%;
+    width: 90%;
+    bottom: 20px;
   }
   
   .promotional-hero-content h1 {
@@ -143,40 +164,16 @@
     font-size: var(--heading-font-size-s);
   }
   
-  .promotional-hero-content p {
-    font-size: var(--body-font-size-m);
-  }
-  
-  .promotional-hero-cta a {
-    padding: var(--spacing-small) var(--spacing-medium);
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (max-width: 480px) {
-  .promotional-hero-container {
-    height: 350px;
-  }
-  
-  .promotional-hero-overlay-box {
-    max-width: 280px;
-    padding: var(--spacing-small);
-    width: 95%;
-  }
-  
-  .promotional-hero-content h1 {
-    font-size: var(--heading-font-size-s);
-  }
-  
-  .promotional-hero-content h2 {
-    font-size: var(--heading-font-size-xs);
-  }
-  
   .promotional-hero-content {
     margin-bottom: var(--spacing-small);
   }
   
   .promotional-hero-cta {
     margin-top: var(--spacing-small);
+  }
+  
+  .promotional-hero-cta a {
+    padding: var(--spacing-small) var(--spacing-medium);
+    font-size: var(--body-font-size-s);
   }
 }
