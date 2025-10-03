@@ -1,6 +1,12 @@
+.promotional-hero-main-container {
+  display: flex;
+  gap: var(--spacing-medium);
+  width: 100%;
+}
+
 .promotional-hero-container {
   position: relative;
-  width: 100%;
+  flex: 1;
   height: 600px;
   overflow: hidden;
 }
@@ -100,7 +106,7 @@
   }
   
   .promotional-hero-overlay-box {
-    max-width: 450px;
+    max-width: 350px;
     padding: var(--spacing-medium);
   }
   
@@ -114,12 +120,17 @@
 }
 
 @media (max-width: 768px) {
+  .promotional-hero-main-container {
+    flex-direction: column;
+    gap: var(--spacing-small);
+  }
+  
   .promotional-hero-container {
     height: 400px;
   }
   
   .promotional-hero-overlay-box {
-    max-width: 400px;
+    max-width: 300px;
     padding: var(--spacing-medium);
     width: 95%;
   }
@@ -148,7 +159,7 @@
   }
   
   .promotional-hero-overlay-box {
-    max-width: 350px;
+    max-width: 280px;
     padding: var(--spacing-small);
     width: 95%;
   }

@@ -3,14 +3,18 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Create the main hero container
-  const heroContainer = document.createElement('div');
-  heroContainer.classList.add('promotional-hero-container');
+  // Create the main container for dual heroes
+  const mainContainer = document.createElement('div');
+  mainContainer.classList.add('promotional-hero-main-container');
 
-  // Process the first row only (single hero design)
-  if (rows.length > 0) {
-    const firstRow = rows[0];
-    const cols = [...firstRow.children];
+  // Process up to two rows for dual hero design
+  rows.slice(0, 2).forEach((row, index) => {
+    const cols = [...row.children];
+
+    // Create individual hero container
+    const heroContainer = document.createElement('div');
+    heroContainer.classList.add('promotional-hero-container');
+    heroContainer.classList.add(`promotional-hero-${index + 1}`);
 
     let backgroundImage = null;
     const contentElements = [];
@@ -29,7 +33,7 @@ export default function decorate(block) {
             img.src,
             img.alt,
             false,
-            [{ width: '1200' }],
+            [{ width: '800' }],
           );
         }
       } else if (content.querySelector('a')) {
@@ -74,7 +78,8 @@ export default function decorate(block) {
     }
 
     heroContainer.appendChild(overlayBox);
-  }
+    mainContainer.appendChild(heroContainer);
+  });
 
-  block.replaceChildren(heroContainer);
+  block.replaceChildren(mainContainer);
 }
