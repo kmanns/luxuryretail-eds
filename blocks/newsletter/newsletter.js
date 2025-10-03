@@ -1,28 +1,34 @@
 export default function decorate(block) {
   const rows = [...block.children];
+  const row = rows[0];
 
-  // Extract content from table cells
-  const [titleCell, descriptionCell, privacyCell] = rows[0]?.children || [];
+  if (!row) return;
 
-  // Create newsletter container
+  // Get cells and add classes to preserve UE instrumentation
+  const cells = [...row.children];
+  const [titleCell, descriptionCell, privacyCell] = cells;
+
+  // Wrap row in container
   const container = document.createElement('div');
   container.className = 'newsletter-container';
 
-  // Create title
+  // Transform title cell
   if (titleCell) {
-    const title = document.createElement('h2');
-    title.className = 'newsletter-title';
-    title.textContent = titleCell.textContent;
-    container.appendChild(title);
+    titleCell.className = 'newsletter-title';
+    const h2 = document.createElement('h2');
+    h2.innerHTML = titleCell.innerHTML;
+    titleCell.textContent = '';
+    titleCell.appendChild(h2);
   }
 
-  // Create description
+  // Transform description cell
   if (descriptionCell) {
-    const description = document.createElement('p');
-    description.className = 'newsletter-description';
-    description.textContent = descriptionCell.textContent;
-    container.appendChild(description);
+    descriptionCell.className = 'newsletter-description';
   }
+
+  // Create form wrapper
+  const formWrapper = document.createElement('div');
+  formWrapper.className = 'newsletter-form-wrapper';
 
   // Create form
   const form = document.createElement('form');
@@ -49,6 +55,7 @@ export default function decorate(block) {
   inputWrapper.appendChild(emailInput);
   inputWrapper.appendChild(submitButton);
   form.appendChild(inputWrapper);
+  formWrapper.appendChild(form);
 
   // Add expand/collapse behavior
   emailInput.addEventListener('focus', () => {
@@ -73,17 +80,20 @@ export default function decorate(block) {
     }
   });
 
-  container.appendChild(form);
-
-  // Create privacy policy text
+  // Transform privacy cell
   if (privacyCell) {
-    const privacy = document.createElement('p');
-    privacy.className = 'newsletter-privacy';
-    privacy.innerHTML = privacyCell.innerHTML;
-    container.appendChild(privacy);
+    privacyCell.className = 'newsletter-privacy';
   }
 
-  // Replace block content
-  block.textContent = '';
-  block.appendChild(container);
+  // Insert form between description and privacy
+  if (descriptionCell && privacyCell) {
+    row.insertBefore(formWrapper, privacyCell);
+  } else if (descriptionCell) {
+    row.appendChild(formWrapper);
+  }
+
+  // Wrap row in container while preserving it
+  row.classList.add('newsletter-row');
+  block.insertBefore(container, row);
+  container.appendChild(row);
 }

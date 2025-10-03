@@ -10,24 +10,41 @@
   margin: 0 auto;
 }
 
-.newsletter-title {
+.newsletter-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-small);
+}
+
+.newsletter-row > div {
+  width: 100%;
+  text-align: center;
+}
+
+.newsletter-title h2 {
   color: white;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 0 0 var(--spacing-small);
+  margin: 0;
 }
 
 .newsletter-description {
   color: white;
   font-size: 1rem;
   line-height: 1.5;
-  margin: 0 0 var(--spacing-medium);
+  margin: 0;
   opacity: 0.95;
 }
 
+.newsletter-form-wrapper {
+  margin: var(--spacing-small) 0;
+}
+
 .newsletter-form {
-  margin: 0 0 var(--spacing-small);
+  display: flex;
+  justify-content: center;
 }
 
 .newsletter-input-wrapper {
