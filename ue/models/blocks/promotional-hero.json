@@ -1,0 +1,75 @@
+{
+  "definitions": [
+    {
+      "title": "Promotional Hero",
+      "id": "promotional-hero",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"promotional-hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Christmas products\"></picture></div><div><h2>Our Christmas Shop</h2><p>Is Open!</p></div><div><a href=\"#\">Shop Christmas</a></div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Halloween treats\"></picture></div><div><h2>Frightfully Delicious</h2><p>Treats</p></div><div><a href=\"#\">Shop Halloween</a></div></div></div>"
+        }
+      },
+      "model": "promotional-hero",
+      "filter": "promotional-hero"
+    },
+    {
+      "title": "Promotional Section",
+      "id": "promotional-section",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Promotional image\"></picture></div><div><h2>Promotional Title</h2><p>Promotional text</p></div><div><a href=\"#\">Call to Action</a></div></div>"
+        }
+      },
+      "model": "promotional-section"
+    }
+  ],
+  "models": [
+    {
+      "id": "promotional-section",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "label": "Background Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+          "label": "Image Alt Text",
+          "multi": false
+        },
+        {
+          "component": "richtext",
+          "name": "div:nth-child(2)",
+          "value": "",
+          "label": "Content",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(3)>a:nth-child(1)[href]",
+          "label": "CTA Link",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(3)>a:nth-child(1)",
+          "label": "CTA Text",
+          "multi": false
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "promotional-hero",
+      "components": [
+        "promotional-section"
+      ]
+    }
+  ]
+}
