@@ -3,62 +3,78 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Create the main container
-  const container = document.createElement('div');
-  container.classList.add('promotional-hero-container');
+  // Create the main hero container
+  const heroContainer = document.createElement('div');
+  heroContainer.classList.add('promotional-hero-container');
 
-  rows.forEach((row, index) => {
-    const section = document.createElement('div');
-    section.classList.add('promotional-hero-section');
-    section.classList.add(`promotional-hero-section-${index + 1}`);
+  // Process the first row only (single hero design)
+  if (rows.length > 0) {
+    const firstRow = rows[0];
+    const cols = [...firstRow.children];
 
-    const cols = [...row.children];
+    let backgroundImage = null;
+    const contentElements = [];
+    let ctaElement = null;
 
+    // Separate content types
     cols.forEach((col) => {
       const content = col.cloneNode(true);
 
-      // Process images
-      const pictures = content.querySelectorAll('picture');
-      pictures.forEach((picture) => {
+      if (content.querySelector('picture')) {
+        // This is the background image
+        const picture = content.querySelector('picture');
         const img = picture.querySelector('img');
         if (img) {
-          const optimizedPicture = createOptimizedPicture(
+          backgroundImage = createOptimizedPicture(
             img.src,
             img.alt,
             false,
-            [{ width: '800' }],
+            [{ width: '1200' }],
           );
-          picture.replaceWith(optimizedPicture);
         }
-      });
-
-      // Identify content type and add appropriate classes
-      if (content.querySelector('picture')) {
-        content.classList.add('promotional-hero-image');
-      } else if (content.querySelector('h1, h2, h3, h4, h5, h6')) {
-        content.classList.add('promotional-hero-content');
-
-        // Wrap text content in overlay
-        const overlay = document.createElement('div');
-        overlay.classList.add('promotional-hero-overlay');
-
-        // Move all content to overlay
-        while (content.firstChild) {
-          overlay.appendChild(content.firstChild);
-        }
-
-        content.appendChild(overlay);
       } else if (content.querySelector('a')) {
-        content.classList.add('promotional-hero-cta');
+        // This is the CTA
+        ctaElement = content;
       } else {
-        content.classList.add('promotional-hero-text');
+        // This is text content
+        contentElements.push(content);
       }
-
-      section.appendChild(content);
     });
 
-    container.appendChild(section);
-  });
+    // Create background image container
+    if (backgroundImage) {
+      const imageContainer = document.createElement('div');
+      imageContainer.classList.add('promotional-hero-background');
+      imageContainer.appendChild(backgroundImage);
+      heroContainer.appendChild(imageContainer);
+    }
 
-  block.replaceChildren(container);
+    // Create bottom overlay box
+    const overlayBox = document.createElement('div');
+    overlayBox.classList.add('promotional-hero-overlay-box');
+
+    // Add content to overlay box
+    contentElements.forEach((content) => {
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('promotional-hero-content');
+      while (content.firstChild) {
+        contentDiv.appendChild(content.firstChild);
+      }
+      overlayBox.appendChild(contentDiv);
+    });
+
+    // Add CTA to overlay box
+    if (ctaElement) {
+      const ctaDiv = document.createElement('div');
+      ctaDiv.classList.add('promotional-hero-cta');
+      while (ctaElement.firstChild) {
+        ctaDiv.appendChild(ctaElement.firstChild);
+      }
+      overlayBox.appendChild(ctaDiv);
+    }
+
+    heroContainer.appendChild(overlayBox);
+  }
+
+  block.replaceChildren(heroContainer);
 }
