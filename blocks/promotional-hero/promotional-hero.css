@@ -23,7 +23,7 @@
 
 .promotional-hero-overlay-box {
   position: absolute;
-  bottom: 60px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
@@ -102,7 +102,7 @@
   .promotional-hero-overlay-box {
     max-width: 500px;
     padding: var(--spacing-large);
-    bottom: 40px;
+    bottom: -30px;
   }
   
   .promotional-hero-content h1 {
@@ -123,7 +123,7 @@
     max-width: 450px;
     padding: var(--spacing-medium) var(--spacing-large);
     width: 90%;
-    bottom: 30px;
+    bottom: -25px;
   }
   
   .promotional-hero-content h1 {
@@ -153,7 +153,7 @@
     max-width: 350px;
     padding: var(--spacing-medium);
     width: 90%;
-    bottom: 20px;
+    bottom: -20px;
   }
   
   .promotional-hero-content h1 {
