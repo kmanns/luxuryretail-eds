@@ -1,5 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   // Get the header section (title and subtitle)
   const headerRow = block.querySelector(':scope > div:first-child');
@@ -34,15 +32,9 @@ export default function decorate(block) {
       const imageWrapper = document.createElement('div');
       imageWrapper.className = 'luxury-events-card-image';
 
-      const img = imageCell.querySelector('img');
-      if (img) {
-        const optimizedPicture = createOptimizedPicture(
-          img.src,
-          img.alt,
-          false,
-          [{ width: '750' }],
-        );
-        imageWrapper.appendChild(optimizedPicture);
+      // Preserve original picture element to maintain UE instrumentation
+      if (imageCell.querySelector('picture, img')) {
+        imageWrapper.innerHTML = imageCell.innerHTML;
       }
       card.appendChild(imageWrapper);
     }

@@ -1,5 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -18,10 +16,8 @@ export default function decorate(block) {
     ul.append(li);
   });
 
-  // Optimize images and make them circular
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '300' }]));
-  });
+  // Images are already optimized by DA.live, preserve them to maintain UE instrumentation
+  // No need to replace picture elements
 
   block.replaceChildren(ul);
 }
