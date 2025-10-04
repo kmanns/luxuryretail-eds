@@ -5,9 +5,7 @@
       "id": "luxury-events",
       "plugins": {
         "da": {
-          "name": "luxury-events",
-          "rows": 2,
-          "columns": 2
+          "unsafeHTML": "<div class=\"luxury-events\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Logo\"></picture>Destination Fortnum's</div><div>EVENTS, STORIES AND MORE</div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Event\"></picture></div><div>EVENT TITLE</div><div>Event description goes here</div><div><a href=\"#\">Read more +</a></div></div></div>"
         }
       },
       "model": "luxury-events",
@@ -18,9 +16,7 @@
       "id": "luxury-event-card",
       "plugins": {
         "da": {
-          "name": "luxury-event-card",
-          "rows": 1,
-          "columns": 4
+          "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Event\"></picture></div><div>EVENT TITLE</div><div>Event description goes here</div><div><a href=\"#\">Read more +</a></div></div>"
         }
       },
       "model": "luxury-event-card"
