@@ -342,42 +342,42 @@
     "id": "newsletter",
     "fields": [
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(1)>div:nth-child(1)",
         "label": "Title",
         "value": "Sign up to our newsletter"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(1)>div:nth-child(2)",
         "label": "Description",
         "value": "Exciting news, exclusive events, & delicious products: subscribe to our emails to hear the latest from Fortnum's"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(2)>div:nth-child(1)",
         "label": "Dropdown 1 Label",
         "value": "Where do you live?"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(2)>div:nth-child(2)",
         "label": "Dropdown 1 Options (comma-separated)",
         "value": "United Kingdom, United States, Europe, Asia, Other"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(3)>div:nth-child(1)",
         "label": "Dropdown 2 Label",
         "value": "Why did you decide to visit Fortnum's today?"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(3)>div:nth-child(2)",
         "label": "Dropdown 2 Options (comma-separated)",
@@ -391,7 +391,7 @@
         "value": "For more details about how we use your information please see our Privacy Policy"
       },
       {
-        "component": "text",
+        "component": "plaintext",
         "valueType": "string",
         "name": "div:nth-child(4)>div:nth-child(2)",
         "label": "Button Text",
