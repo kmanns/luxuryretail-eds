@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Auto-rebuild UE configuration files before commit
+npm run build:json
+
+# Stage the rebuilt files
+git add component-definition.json component-models.json component-filters.json

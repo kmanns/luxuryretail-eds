@@ -91,6 +91,31 @@
           "model": "card-circular-item"
         },
         {
+          "title": "Cards List",
+          "id": "cards-list",
+          "plugins": {
+            "da": {
+              "name": "cards-list",
+              "rows": 2,
+              "columns": 2
+            }
+          },
+          "model": "cards-list",
+          "filter": "cards-list"
+        },
+        {
+          "title": "Card List Item",
+          "id": "cards-list-item",
+          "plugins": {
+            "da": {
+              "name": "cards-list-item",
+              "rows": 1,
+              "columns": 2
+            }
+          },
+          "model": "cards-list-item"
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
@@ -180,13 +205,38 @@
           }
         },
         {
+          "title": "Luxury Events",
+          "id": "luxury-events",
+          "plugins": {
+            "da": {
+              "name": "luxury-events",
+              "rows": 2,
+              "columns": 2
+            }
+          },
+          "model": "luxury-events",
+          "filter": "luxury-events"
+        },
+        {
+          "title": "Event Card",
+          "id": "luxury-event-card",
+          "plugins": {
+            "da": {
+              "name": "luxury-event-card",
+              "rows": 1,
+              "columns": 4
+            }
+          },
+          "model": "luxury-event-card"
+        },
+        {
           "title": "Newsletter",
           "id": "newsletter",
           "plugins": {
             "da": {
               "name": "newsletter",
-              "rows": 1,
-              "columns": 3
+              "rows": 4,
+              "columns": 2
             }
           },
           "model": "newsletter"

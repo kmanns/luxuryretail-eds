@@ -11,6 +11,7 @@
       "accordion",
       "cards",
       "cards-circular",
+      "cards-list",
       "carousel",
       "columns",
       "embed",
@@ -18,6 +19,7 @@
       "form",
       "hero",
       "image",
+      "luxury-events",
       "newsletter",
       "promotional-hero",
       "quote",
@@ -38,6 +40,12 @@
     "id": "cards-circular",
     "components": [
       "card-circular-item"
+    ]
+  },
+  {
+    "id": "cards-list",
+    "components": [
+      "cards-list-item"
     ]
   },
   {
@@ -67,6 +75,12 @@
     "components": [
       "text",
       "image"
+    ]
+  },
+  {
+    "id": "luxury-events",
+    "components": [
+      "luxury-event-card"
     ]
   },
   {

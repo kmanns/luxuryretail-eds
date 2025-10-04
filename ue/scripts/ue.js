@@ -14,7 +14,7 @@ import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion');
+  const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion, div.luxury-events, div.newsletter');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -68,6 +68,94 @@ const setupObservers = () => {
                   const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
                   if (targetSlide) {
                     moveInstrumentation(removedElements[0], targetSlide);
+                  }
+                }
+              }
+            }
+            break;
+          case 'luxury-events':
+            // handle luxury-events: preserve instrumentation when rows are removed
+            // and cards are created
+            if (mutation.target.classList.contains('luxury-events')) {
+              // When the cards container is added, map removed rows to new cards
+              const cardsContainer = mutation.target.querySelector('.luxury-events-cards');
+              if (cardsContainer) {
+                const removedRows = [...removedElements].filter(
+                  (node) => node.tagName === 'DIV' && node.children.length === 4,
+                );
+                const cards = [...cardsContainer.querySelectorAll('.luxury-events-card')];
+                removedRows.forEach((row, index) => {
+                  if (cards[index]) {
+                    moveInstrumentation(row, cards[index]);
+                    // Move instrumentation from cells to card elements
+                    const [imageCell, titleCell, descriptionCell, linkCell] = row.children;
+                    const card = cards[index];
+                    const cardImage = card.querySelector('.luxury-events-card-image img');
+                    const cardTitle = card.querySelector('.luxury-events-card-title');
+                    const cardDesc = card.querySelector('.luxury-events-card-description');
+                    const cardLink = card.querySelector('.luxury-events-link');
+                    if (imageCell && cardImage) {
+                      moveInstrumentation(imageCell.querySelector('img'), cardImage);
+                    }
+                    if (titleCell && cardTitle) {
+                      moveInstrumentation(titleCell, cardTitle);
+                    }
+                    if (descriptionCell && cardDesc) {
+                      moveInstrumentation(descriptionCell, cardDesc);
+                    }
+                    if (linkCell && cardLink) {
+                      moveInstrumentation(linkCell.querySelector('a'), cardLink);
+                    }
+                  }
+                });
+              }
+            }
+            break;
+          case 'newsletter':
+            // handle newsletter: preserve instrumentation when block content
+            // is replaced
+            if (mutation.target.classList.contains('newsletter')) {
+              const contentWrapper = mutation.target.querySelector('.newsletter-content');
+              if (contentWrapper && removedElements.length > 0) {
+                // Map original rows to new elements
+                const removedRows = [...removedElements].filter(
+                  (node) => node.tagName === 'DIV',
+                );
+                if (removedRows.length >= 4) {
+                  const [headerRow, dropdown1Row, _dropdown2Row, footerRow] = removedRows;
+                  // Move header instrumentation
+                  if (headerRow) {
+                    const [titleCell, descriptionCell] = headerRow.children;
+                    const titleDiv = contentWrapper.querySelector('.newsletter-title');
+                    const descDiv = contentWrapper.querySelector('.newsletter-description');
+                    if (titleCell && titleDiv) {
+                      moveInstrumentation(titleCell, titleDiv);
+                    }
+                    if (descriptionCell && descDiv) {
+                      moveInstrumentation(descriptionCell, descDiv);
+                    }
+                  }
+                  // Move dropdown instrumentation
+                  if (dropdown1Row) {
+                    const [labelCell, optionsCell] = dropdown1Row.children;
+                    const label = contentWrapper.querySelector('.newsletter-field-label');
+                    const select = contentWrapper.querySelector('.newsletter-select');
+                    if (labelCell && label) moveInstrumentation(labelCell, label);
+                    if (optionsCell && select) {
+                      moveInstrumentation(optionsCell, select);
+                    }
+                  }
+                  // Move footer instrumentation
+                  if (footerRow) {
+                    const [privacyCell, buttonCell] = footerRow.children;
+                    const privacyDiv = contentWrapper.querySelector('.newsletter-privacy');
+                    const button = contentWrapper.querySelector('.newsletter-button');
+                    if (privacyCell && privacyDiv) {
+                      moveInstrumentation(privacyCell, privacyDiv);
+                    }
+                    if (buttonCell && button) {
+                      moveInstrumentation(buttonCell, button);
+                    }
                   }
                 }
               }

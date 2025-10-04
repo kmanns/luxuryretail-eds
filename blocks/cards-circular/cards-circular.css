@@ -114,7 +114,7 @@
 }
 
 .cards-circular .cards-circular-item-image {
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 4px;
   width: 156px;
   height: 156px;
   border-radius: 50%;
@@ -141,7 +141,7 @@
 }
 
 .cards-circular .cards-circular-item-body {
-  margin-top: var(--spacing-xs);
+  margin-top: 0;
 }
 
 .cards-circular .cards-circular-item-body h3,
