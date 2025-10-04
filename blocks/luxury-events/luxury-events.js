@@ -79,6 +79,19 @@ export default function decorate(block) {
         readMoreLink.className = 'luxury-events-link';
         linkWrapper.appendChild(readMoreLink);
         contentWrapper.appendChild(linkWrapper);
+      } else {
+        // If no link element found, check if there's text content
+        const linkText = linkCell.textContent.trim();
+        if (linkText) {
+          const linkWrapper = document.createElement('div');
+          linkWrapper.className = 'luxury-events-card-link';
+          const readMoreLink = document.createElement('a');
+          readMoreLink.href = '#';
+          readMoreLink.textContent = linkText;
+          readMoreLink.className = 'luxury-events-link';
+          linkWrapper.appendChild(readMoreLink);
+          contentWrapper.appendChild(linkWrapper);
+        }
       }
     }
 
