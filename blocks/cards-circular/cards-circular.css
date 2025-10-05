@@ -10,7 +10,7 @@
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: var(--spacing-small);
-  place-items: center start;
+  place-items: center;
   max-width: 1000px;
   position: relative;
 }
@@ -167,66 +167,23 @@
 @media (max-width: 1024px) {
   .cards-circular > ul {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: auto;
     gap: var(--spacing-small);
     max-width: 450px;
+    align-items: start;
   }
 
   .cards-circular > ul > li {
     max-width: 140px;
+    align-self: start;
   }
 
-  /* Reset positioning for tablet/mobile - simple 3x3 grid */
+  /* Reset ALL desktop positioning - unified behavior for all items */
   .cards-circular > ul > li:nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-  }
-
-  /* 3x3 grid layout - 9 items total */
-  .cards-circular > ul > li:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(4) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(5) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(6) {
-    grid-column: 3;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(7) {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .cards-circular > ul > li:nth-child(8) {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  .cards-circular > ul > li:nth-child(9) {
-    grid-column: 3;
-    grid-row: 3;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    transform: none !important;
+    justify-self: center !important;
   }
 
   .cards-circular .cards-circular-item-image {
@@ -244,66 +201,23 @@
 @media (max-width: 480px) {
   .cards-circular > ul {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: auto;
     gap: var(--spacing-xs);
     max-width: 300px;
+    align-items: start;
   }
 
   .cards-circular > ul > li {
     max-width: 100px;
+    align-self: start;
   }
 
-  /* Reset positioning for small screens - simple 3x3 grid */
+  /* Reset ALL desktop positioning - unified behavior for all items */
   .cards-circular > ul > li:nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-  }
-
-  /* 3x3 grid layout - 9 items total */
-  .cards-circular > ul > li:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .cards-circular > ul > li:nth-child(4) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(5) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(6) {
-    grid-column: 3;
-    grid-row: 2;
-  }
-
-  .cards-circular > ul > li:nth-child(7) {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .cards-circular > ul > li:nth-child(8) {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  .cards-circular > ul > li:nth-child(9) {
-    grid-column: 3;
-    grid-row: 3;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    transform: none !important;
+    justify-self: center !important;
   }
 
   .cards-circular .cards-circular-item-image {

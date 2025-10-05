@@ -1,0 +1,12 @@
+Always use Context7 MCP for:
+- Adobe Experience Manager (AEM) Edge Delivery Services
+- Universal Editor documentation and best practices
+- Block development patterns and conventions
+- Any Adobe Commerce or AEM-related code generation
+- Library and API documentation lookups
+
+When providing code suggestions or verifying implementations:
+1. First check Context7 for official Adobe EDS documentation
+2. Reference the official patterns and best practices
+3. Cite sources from Context7 documentation
+
