@@ -1,0 +1,99 @@
+/* Footer Columns Block */
+.footer-columns {
+  background-color: var(--color-neutral-50, #fafafa);
+  padding: var(--spacing-xlarge) var(--spacing-medium);
+}
+
+.footer-columns-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-large) var(--spacing-medium);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Column */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+/* Column Header - inherits default heading styles from DA.live */
+.footer-column-header {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Column Links List */
+.footer-column-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-column-links li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Link Styling - inherits default link styles */
+.footer-column-links a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xxs);
+  transition: opacity 0.2s ease;
+}
+
+.footer-column-links a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* Social Media Icons Support */
+.footer-column-links a img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Tablet: 3 columns × 2 rows */
+@media (max-width: 1024px) {
+  .footer-columns-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-large) var(--spacing-small);
+  }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 768px) {
+  .footer-columns {
+    padding: var(--spacing-large) var(--spacing-small);
+  }
+
+  .footer-columns-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-medium) var(--spacing-small);
+  }
+}
+
+/* Small Mobile: 1 column stacked */
+@media (max-width: 480px) {
+  .footer-columns-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-medium);
+  }
+
+  .footer-column {
+    padding-bottom: var(--spacing-small);
+    border-bottom: 1px solid var(--color-neutral-200, #e5e5e5);
+  }
+
+  .footer-column:last-child {
+    border-bottom: none;
+  }
+}

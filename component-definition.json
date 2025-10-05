@@ -187,6 +187,16 @@
           }
         },
         {
+          "title": "Footer Columns",
+          "id": "footer-columns",
+          "plugins": {
+            "da": {
+              "name": "footer-columns",
+              "unsafeHTML": "<table><tr><th>Column 1 Header</th><th>Column 2 Header</th><th>Column 3 Header</th><th>Column 4 Header</th><th>Column 5 Header</th><th>Column 6 Header</th></tr><tr><td>Link 1</td><td>Link 1</td><td>Link 1</td><td>Link 1</td><td>Link 1</td><td>Link 1</td></tr><tr><td>Link 2</td><td>Link 2</td><td>Link 2</td><td>Link 2</td><td>Link 2</td><td>Link 2</td></tr><tr><td>Link 3</td><td>Link 3</td><td>Link 3</td><td>Link 3</td><td>Link 3</td><td>Link 3</td></tr></table>"
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {

@@ -217,6 +217,53 @@
     ]
   },
   {
+    "id": "footer-columns",
+    "fields": [
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(1)",
+        "value": "",
+        "label": "Column 1 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(2)",
+        "value": "",
+        "label": "Column 2 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(3)",
+        "value": "",
+        "label": "Column 3 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(4)",
+        "value": "",
+        "label": "Column 4 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(5)",
+        "value": "",
+        "label": "Column 5 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(6)",
+        "value": "",
+        "label": "Column 6 Header",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
