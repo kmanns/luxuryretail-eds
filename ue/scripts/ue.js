@@ -14,7 +14,7 @@ import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion, div.luxury-events, div.newsletter');
+  const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion, div.luxury-events, div.newsletter, div.footer-columns');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -77,7 +77,6 @@ const setupObservers = () => {
             // handle luxury-events: preserve instrumentation when rows are removed
             // and cards are created
             if (mutation.target.classList.contains('luxury-events')) {
-              // When the cards container is added, map removed rows to new cards
               const cardsContainer = mutation.target.querySelector('.luxury-events-cards');
               if (cardsContainer) {
                 const removedRows = [...removedElements].filter(
@@ -87,7 +86,6 @@ const setupObservers = () => {
                 removedRows.forEach((row, index) => {
                   if (cards[index]) {
                     moveInstrumentation(row, cards[index]);
-                    // Move instrumentation from cells to card elements
                     const [imageCell, titleCell, descriptionCell, linkCell] = row.children;
                     const card = cards[index];
                     const cardImage = card.querySelector('.luxury-events-card-image img');
@@ -112,18 +110,13 @@ const setupObservers = () => {
             }
             break;
           case 'newsletter':
-            // handle newsletter: preserve instrumentation when block content
-            // is replaced
+            // handle newsletter: preserve instrumentation when block content is replaced
             if (mutation.target.classList.contains('newsletter')) {
               const contentWrapper = mutation.target.querySelector('.newsletter-content');
               if (contentWrapper && removedElements.length > 0) {
-                // Map original rows to new elements
-                const removedRows = [...removedElements].filter(
-                  (node) => node.tagName === 'DIV',
-                );
+                const removedRows = [...removedElements].filter((node) => node.tagName === 'DIV');
                 if (removedRows.length >= 4) {
                   const [headerRow, dropdown1Row, _dropdown2Row, footerRow] = removedRows;
-                  // Move header instrumentation
                   if (headerRow) {
                     const [titleCell, descriptionCell] = headerRow.children;
                     const titleDiv = contentWrapper.querySelector('.newsletter-title');
@@ -135,7 +128,6 @@ const setupObservers = () => {
                       moveInstrumentation(descriptionCell, descDiv);
                     }
                   }
-                  // Move dropdown instrumentation
                   if (dropdown1Row) {
                     const [labelCell, optionsCell] = dropdown1Row.children;
                     const label = contentWrapper.querySelector('.newsletter-field-label');
@@ -145,7 +137,6 @@ const setupObservers = () => {
                       moveInstrumentation(optionsCell, select);
                     }
                   }
-                  // Move footer instrumentation
                   if (footerRow) {
                     const [privacyCell, buttonCell] = footerRow.children;
                     const privacyDiv = contentWrapper.querySelector('.newsletter-privacy');
@@ -157,6 +148,40 @@ const setupObservers = () => {
                       moveInstrumentation(buttonCell, button);
                     }
                   }
+                }
+              }
+            }
+            break;
+          case 'footer-columns':
+            // handle footer-columns: preserve instrumentation when table structure
+            // is transformed to grid/list structure
+            if (mutation.target.classList.contains('footer-columns')) {
+              const columnsGrid = mutation.target.querySelector('.footer-columns-grid');
+              if (columnsGrid && removedElements.length > 0) {
+                const removedRows = [...removedElements].filter((node) => node.tagName === 'DIV');
+                if (removedRows.length > 0) {
+                  const headerRow = removedRows[0];
+                  const columns = [...columnsGrid.querySelectorAll('.footer-column')];
+                  if (headerRow && headerRow.children) {
+                    [...headerRow.children].forEach((headerCell, colIndex) => {
+                      if (columns[colIndex]) {
+                        const columnHeader = columns[colIndex].querySelector('.footer-column-header');
+                        if (columnHeader) {
+                          moveInstrumentation(headerCell, columnHeader);
+                        }
+                      }
+                    });
+                  }
+                  removedRows.slice(1).forEach((row, rowIndex) => {
+                    [...row.children].forEach((cell, colIndex) => {
+                      if (columns[colIndex]) {
+                        const linksList = columns[colIndex].querySelector('.footer-column-links');
+                        if (linksList && linksList.children[rowIndex]) {
+                          moveInstrumentation(cell, linksList.children[rowIndex]);
+                        }
+                      }
+                    });
+                  });
                 }
               }
             }
