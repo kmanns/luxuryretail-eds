@@ -18,7 +18,7 @@ export default function decorate(block) {
 
   // Get dropdown 2 data from third row
   const [dropdown2LabelCell, dropdown2OptionsCell] = dropdown2Row.children;
-  const dropdown2Label = dropdown2LabelCell?.textContent.trim() || "Why did you decide to visit Fortnum's today?";
+  const dropdown2Label = dropdown2LabelCell?.textContent.trim() || 'Why did you decide to visit us today?';
   const dropdown2Options = dropdown2OptionsCell?.textContent.trim().split(',').map((opt) => opt.trim()).filter((opt) => opt) || [];
 
   // Get privacy text and button text from fourth row
