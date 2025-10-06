@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: https://content.da.live/stephen-garner-adobe/luxuryretail/
+    url: https://content.da.live/kmanns/luxuryretail-eds
     type: markup
 
 folders:
