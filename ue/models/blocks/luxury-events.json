@@ -3,11 +3,11 @@
     {
       "title": "Luxury Events",
       "id": "luxury-events",
-      "plugins": {
-        "da": {
-          "unsafeHTML": "<div class=\"luxury-events\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Logo\"></picture>Destination Fortnum's</div><div>EVENTS, STORIES AND MORE</div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Event\"></picture></div><div>EVENT TITLE</div><div>Event description goes here</div><div><a href=\"#\">Read more +</a></div></div></div>"
-        }
-      },
+        "plugins": {
+          "da": {
+            "unsafeHTML": "<div class=\"luxury-events\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Logo\"></picture>Destination Luxury</div><div>EVENTS, STORIES AND MORE</div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\" alt=\"Event\"></picture></div><div>EVENT TITLE</div><div>Event description goes here</div><div><a href=\"#\">Read more +</a></div></div></div>"
+          }
+        },
       "model": "luxury-events",
       "filter": "luxury-events"
     },
@@ -45,7 +45,7 @@
           "valueType": "string",
           "name": "div:nth-child(1)>div:nth-child(1)",
           "label": "Title",
-          "value": "Destination Fortnum's"
+          "value": "Destination Luxury"
         },
         {
           "component": "text",

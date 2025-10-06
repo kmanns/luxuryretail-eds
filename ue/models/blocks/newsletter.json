@@ -29,7 +29,7 @@
           "valueType": "string",
           "name": "div:nth-child(1)>div:nth-child(2)",
           "label": "Description",
-          "value": "Exciting news, exclusive events, & delicious products: subscribe to our emails to hear the latest from Fortnum's"
+          "value": "Exciting news, exclusive events, & delicious products: subscribe to our emails to hear the latest from our luxury collection"
         },
         {
           "component": "plaintext",
@@ -50,7 +50,7 @@
           "valueType": "string",
           "name": "div:nth-child(3)>div:nth-child(1)",
           "label": "Dropdown 2 Label",
-          "value": "Why did you decide to visit Fortnum's today?"
+          "value": "Why did you decide to visit us today?"
         },
         {
           "component": "plaintext",

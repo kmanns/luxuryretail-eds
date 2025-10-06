@@ -34,6 +34,34 @@ npm run lint             # Check code quality
 3. Register in `ue/models/section.json`
 4. Run `npm run build:json`
 
+## DA.live Block Library Considerations
+
+When creating blocks for the DA.live block library, follow these guidelines:
+
+**✅ DO:**
+- Use **design tokens** from `styles/styles.css` for all spacing, colors, and typography
+- Define **block-specific tokens** in the block's CSS (e.g., `--footer-breakpoint-mobile`)
+- Keep blocks **semantic** - focus on DOM transformation only
+- Add **UE mutation observers** in `ue/scripts/ue.js` for blocks that transform DOM
+- Follow **DA.live best practices** - centralized UE handling per [official docs](https://docs.da.live/developers/reference/universal-editor)
+- Include **accessibility attributes** (ARIA roles, labels, keyboard navigation)
+- Make blocks **responsive** with mobile-first design
+- Use **CSS custom properties** for configurable values (breakpoints, animations)
+
+**❌ DON'T:**
+- Hardcode spacing, colors, or font sizes - always use design tokens
+- Handle UE instrumentation inside blocks - use centralized `ue.js`
+- Create blocks dependent on project-specific structure
+- Use inline styles or magic numbers
+- Skip accessibility considerations
+
+**Example: footer-columns block**
+- ✅ Uses `--spacing-xsmall`, `--color-neutral-200` from global tokens
+- ✅ Defines `--footer-breakpoint-mobile`, `--footer-columns-desktop` locally
+- ✅ UE instrumentation handled in `ue/scripts/ue.js` (not in block)
+- ✅ Responsive accordion with ARIA attributes
+- ✅ Reads breakpoints from CSS via `getComputedStyle()`
+
 ## Resources
 
 - [AEM Edge Delivery Docs](https://www.aem.live/docs/)
