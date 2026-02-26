@@ -14,7 +14,7 @@
           "Magento-Environment-Id": "CWC1Z3dRYVnZ5UEFozgrDk"
         }
       },
-      "commerce-assets-enabled": false,
+      "commerce-assets-enabled": true,
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Testing",
